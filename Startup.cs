@@ -27,7 +27,8 @@ namespace BootListRazor
         {
             services.AddDbContext<ApplicationDbContext>(option => option.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
 
-
+            //for API in controllers
+            services.AddControllersWithViews();
            //Need to install pakage Microsoift.AspNetCore.Mvc,RazorRyuntimeComnpilation
            //this will allow refesh to refresh page when html is chnaged and page is running
             services.AddRazorPages().AddRazorRuntimeCompilation();
@@ -57,6 +58,7 @@ namespace BootListRazor
 
             app.UseEndpoints(endpoints =>
             {
+                endpoints.MapControllers();
                 endpoints.MapRazorPages();
             });
         }
